@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 // Praktikum 1
-
 // Route::get('/', function () {
 //     return "selamat datanggggg";
 // });
