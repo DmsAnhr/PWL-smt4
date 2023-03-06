@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\Prak1Controller;
 use App\Http\Controllers\Prak2Controller;
 use Illuminate\Support\Facades\Route;
@@ -42,4 +43,5 @@ Route::get('/experience', [Prak2Controller::class, 'experience']);
 
 
 // Auth::routes();
+Route::get('/kendaraan', [KendaraanController::class, 'index']);
 
