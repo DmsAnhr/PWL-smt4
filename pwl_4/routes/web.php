@@ -5,6 +5,7 @@ use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HobiController;
 use App\Http\Controllers\KeluargaController;
+use App\Http\Controllers\MatkulController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -29,4 +30,5 @@ Route::get('/experience', [DashboardController::class, 'experience']);
 Route::get('/kendaraan', [KendaraanController::class, 'index']);
 Route::get('/hobi', [HobiController::class, 'index']);
 Route::get('/keluarga', [KeluargaController::class, 'index']);
+Route::get('/matkul', [MatkulController::class, 'index']);
 

@@ -688,4 +688,19 @@
 $( document ).ready(function() {
   var classMenu = $('.content-header').attr('menu');
   $('.nav-item '+classMenu).addClass('active');
+
+  $('<div class="col-2"></div>').insertBefore('.col-matkul[mtkl=Stat_Kom]');
+  $('<div class="col-2"></div>').insertBefore('.col-matkul[mtkl=BI]');
+  $('<div class="col-5"></div>').insertBefore('.col-matkul[mtkl=Manaj_Proyek]');
+  $('<div class="col-6"></div>').insertAfter('.col-matkul[mtkl=ADBO]');
+  $('<div class="col-1"></div>').insertBefore('.col-matkul[mtkl=Prak_Jarkom]');
+  
+  $('.col-matkul').removeClass('col-1');
+  $('.col-matkul[jam=2]').addClass('col-2');
+  $('.col-matkul[jam=3]').addClass('col-3');
+  $('.col-matkul[jam=4]').addClass('col-4');
+  $('.col-matkul[jam=6]').addClass('col-6');
+  
+  $('.row-jam .col-gap').height($('.col-jam').height());
+  $('.row-jam .col-hari').height($('.col-matkul').height());
 });
