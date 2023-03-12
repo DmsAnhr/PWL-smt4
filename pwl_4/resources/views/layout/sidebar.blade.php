@@ -74,6 +74,22 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/keluarga" class="nav-link link-keluarga">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Keluarga
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/matkul" class="nav-link link-matkul">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Mata Kuliah
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
