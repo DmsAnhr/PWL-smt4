@@ -36,6 +36,7 @@
                                         <th>No</th>
                                         <th>NIM</th>
                                         <th>Nama</th>
+                                        <th>Prodi</th>
                                         <th>Gender</th>
                                         <th>No Hp</th>
                                         <th>Action</th>
@@ -45,20 +46,21 @@
                                     @if ($mhs -> count() > 0)
                                         @foreach ( $mhs as $i => $m )
                                             <tr>
-                                                <td>{{$i + 1}}</td>
-                                                <td>{{$m -> nim}}</td>
-                                                <td>{{$m -> nama}}</td>
-                                                <td>{{$m -> jk}}</td>
-                                                <td>{{$m -> no_telp}}</td>
-                                                <td style="display:flex;">
-                                                    <a href={{url('/mahasiswa/'.$m->id. '/edit')}} class="btn btn-warning btn-xs">
+                                                <td style="vertical-align: middle">{{$i + 1}}</td>
+                                                <td style="vertical-align: middle">{{$m -> nim}}</td>
+                                                <td style="vertical-align: middle">{{$m -> nama}}</td>
+                                                <td style="vertical-align: middle">{{$m -> prodi->nama}}</td>
+                                                <td style="vertical-align: middle">{{$m -> jk}}</td>
+                                                <td style="vertical-align: middle">{{$m -> no_telp}}</td>
+                                                <td style="display: flex">
+                                                    <a type="button" href={{url('/mahasiswa/'.$m->id. '/edit')}} class="btn btn-sm btn-warning text-white mx-1">
                                                         Ubah
                                                     </a>
 
                                                     <form method="POST" action="{{ url('/mahasiswa/'.$m->id) }}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-xs">Hapus</button>
+                                                        <button type="submit" class="btn btn-sm btn-danger text-white mx-1">Hapus</button>
                                                     </form>
                                                 </td>
                                             </tr>

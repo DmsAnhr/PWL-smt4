@@ -52,4 +52,5 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/matkul', [MatkulController::class, 'index']);
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa','id');
 
+    Route::get('/prodi', [ProdiController::class, 'index']);
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MahasiswaModel;
+use App\Models\ProdiModel;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -27,6 +28,7 @@ class MahasiswaController extends Controller
     public function create()
     {
         return view('mahasiswa.create_mahasiswa')
+            ->with('prodi', ProdiModel::all())
             ->with('url_form', url('/mahasiswa'));
     }
 
@@ -74,6 +76,7 @@ class MahasiswaController extends Controller
         $mahasiswa = MahasiswaModel::find($id);
         return view('mahasiswa.create_mahasiswa')
             ->with('mhs',$mahasiswa)
+            ->with('prodi', ProdiModel::all())
             ->with('url_form', url('/mahasiswa/'.$id));
     }
 

@@ -47,6 +47,32 @@
                                         <span class="error invalid-feedback">{{ $message }} </span>
                                     @enderror
                                 </div>
+                                {{-- <div class="form-group">
+                                    <label>Kode Prodi</label>
+                                    <input class="form-control @error('prodi_id') is-invalid @enderror"
+                                        value="{{ isset($mhs)? $mhs->prodi_id : old('prodi_id') }}" name="prodi_id" type="text" />
+                                    @error('prodi_id')
+                                        <span class="error invalid-feedback">{{ $message }} </span>
+                                    @enderror
+                                </div> --}}
+                                <div class="form-group">
+                                    <label>Prodi</label>
+                                    <select name="prodi_id" class="form-control">
+                                        <option value="null" selected disabled>Silahkan Pilih</option>
+                                        @foreach ($prodi as $p)
+                                            <option value="{{ $p->id }}" 
+                                                @if(isset($mhs))
+                                                    @if($mhs->prodi_id == $p->id)
+                                                        selected
+                                                    @endif
+                                                @endif>{{ $p->nama }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('prodi_id')
+                                        <span class="error invalid-feedback">{{ $message }} </span>
+                                    @enderror
+                                </div>
                                 <div class="form-group">
                                     <label>Gender</label>
                                     <input class="form-control @error('jk') is-invalid @enderror"

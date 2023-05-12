@@ -16,11 +16,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            // KendaraanSeeder::class            
-            // HobiSeeder::class            
-            // KeluargaSeeder::class            
-            // MatkulSeeder::class            
-            UserSeeder::class            
+            KendaraanSeeder::class,            
+            HobiSeeder::class      ,      
+            KeluargaSeeder::class   ,         
+            MatkulSeeder::class      ,      
+            UserSeeder::class         ,   
+            ProdiSeeder::class            
         ]);
     }
 }

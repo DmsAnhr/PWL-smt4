@@ -12,10 +12,15 @@ class MahasiswaModel extends Model
     protected $fillable = [
         'nim',
         'nama',
+        'prodi_id',
         'jk',
         'tempat_lahir',
         'tanggal_lahir',
         'alamat',
         'no_telp',
     ];
+
+    public function prodi() {
+        return $this->belongsTo(ProdiModel::class);
+    }
 }
