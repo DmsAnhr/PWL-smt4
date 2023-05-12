@@ -9,4 +9,8 @@ class HobiModel extends Model
 {
     use HasFactory;
     protected $table = 'hobi';
+
+    public function mahasiswa(){
+        return $this->belongsToMany(MahasiswaModel::class, 'hobi_mahasiswa', 'mahasiswa_id', 'hobi_id');
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MahasiswaModel;
 use App\Models\ProdiModel;
+use App\Models\HobiModel;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -29,6 +30,7 @@ class MahasiswaController extends Controller
     {
         return view('mahasiswa.create_mahasiswa')
             ->with('prodi', ProdiModel::all())
+            ->with('hobi', HobiModel::all())
             ->with('url_form', url('/mahasiswa'));
     }
 

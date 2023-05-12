@@ -23,4 +23,8 @@ class MahasiswaModel extends Model
     public function prodi() {
         return $this->belongsTo(ProdiModel::class);
     }
+
+    public function hobi(){
+        return $this->belongsToMany(HobiModel::class);
+    }
 }

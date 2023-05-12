@@ -27,7 +27,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            @foreach ($hobi as $i => $h)
+                            {{-- @foreach ($hobi as $i => $h)
                                 <div class="callout callout-info d-flex">
                                     <h5 class="mr-2">-</h5>
                                     <div>
@@ -36,7 +36,31 @@
                                         <p>{{ $h->alasan }}</p>
                                     </div>
                                 </div>
-                            @endforeach
+                            @endforeach --}}
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Hobi</th>
+                                        <th>Mahasiswa</th>
+                                        <th width="1%">Jumlah</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($hobi as $h)
+                                    <tr>
+                                        <td>{{ $h->hobi }}</td>
+                                        <td>
+                                            <ul>
+                                                @foreach($h->mahasiswa as $m)
+                                                <li> {{ $m->nama }} </li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
+                                        <td class="text-center">{{ $h->mahasiswa->count() }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
