@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HobiController;
 use App\Http\Controllers\KeluargaController;
 use App\Http\Controllers\MatkulController;
+use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Auth;
