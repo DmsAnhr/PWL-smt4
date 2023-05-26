@@ -6,6 +6,7 @@ use App\Models\MahasiswaModel;
 use App\Models\Mahasiswa_MataKuliah;
 use App\Models\ProdiModel;
 use App\Models\HobiModel;
+use Illuminate\Support\Facades\Storage;
 use PDF;
 use Illuminate\Http\Request;
 
@@ -58,9 +59,17 @@ class MahasiswaController extends Controller
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required',
-            'no_telp' => 'required|digits_between:6,15'
+            'no_telp' => 'required|digits_between:6,15',
+            'foto' => 'required|image|mimes:jpeg,png,jpg|dimensions:max_width=100,max_height=100',
         ]);
+
+        if ($request->file('foto')) {
+            $image_name = $request->file('foto')->store('images', 'public');
+        }
+
         $data = MahasiswaModel::create($request->except(['_token']));
+        $data->foto = $image_name;
+        $data->save();
         return redirect('mahasiswa')
         ->with('success', 'Data berhasil ditambah');
     }
@@ -100,21 +109,62 @@ class MahasiswaController extends Controller
      * @param  \App\Models\MahasiswaModel  $mahasiswa
      * @return \Illuminate\Http\Response
      */
+    // public function update(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'nim' => 'required|unique:mahasiswa,nim,'.$id,
+    //         'nama' => 'required',
+    //         'jk' => 'required|in:l,p,L,P',
+    //         'tempat_lahir' => 'required',
+    //         'tanggal_lahir' => 'required|date',
+    //         'alamat' => 'required',
+    //         'no_telp' => 'required|digits_between:6,15',
+    //         'foto' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:max_width=100,max_height=100',
+    //     ]);
+    //     $data = MahasiswaModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
+    //     return redirect('mahasiswa')
+    //     ->with('success', 'Data berhasil dirubah');
+    // }
+
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nim' => 'required|unique:mahasiswa,nim,'.$id,
+            'nim' => 'required|unique:mahasiswa,nim,' . $id,
             'nama' => 'required',
             'jk' => 'required|in:l,p,L,P',
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required|date',
             'alamat' => 'required',
-            'no_telp' => 'required|digits_between:6,15'
+            'no_telp' => 'required|digits_between:6,15',
+            'foto' => 'required|image|mimes:jpeg,png,jpg',
         ]);
+
+        $mahasiswa = MahasiswaModel::findOrFail($id);
+        $mahasiswa->nim = $request->nim;
+        $mahasiswa->nama = $request->nama;
+        $mahasiswa->jk = $request->jk;
+        $mahasiswa->tempat_lahir = $request->tempat_lahir;
+        $mahasiswa->tanggal_lahir = $request->tanggal_lahir;
+        $mahasiswa->alamat = $request->alamat;
+        $mahasiswa->no_telp = $request->no_telp;
+        
+        if ($request->hasFile('foto')) {
+            // Menghapus foto lama jika ada
+            if ($mahasiswa->foto) {
+                Storage::disk('public')->delete($mahasiswa->foto);
+            }
+    
+            // Menyimpan foto baru
+            $foto_name = $request->file('foto')->store('images', 'public');
+            $mahasiswa->foto = $foto_name;
+        }
+
         $data = MahasiswaModel::where('id', '=', $id)->update($request->except(['_token', '_method']));
-        return redirect('mahasiswa')
-        ->with('success', 'Data berhasil dirubah');
+
+        return redirect('mahasiswa')->with('success', 'Data berhasil diubah');
+
     }
+
 
     /**
      * Remove the specified resource from storage.

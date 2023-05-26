@@ -36,6 +36,7 @@
                                         <th>No</th>
                                         <th>NIM</th>
                                         <th>Nama</th>
+                                        <th>Foto</th>
                                         <th>Prodi</th>
                                         <th>Gender</th>
                                         <th>No Hp</th>
@@ -49,10 +50,13 @@
                                                 <td style="vertical-align: middle">{{$i + 1}}</td>
                                                 <td style="vertical-align: middle">{{$m -> nim}}</td>
                                                 <td style="vertical-align: middle">{{$m -> nama}}</td>
+                                                <td style="vertical-align: middle">
+                                                    <img src="{{ asset('storage/'.$m->foto) }}" alt="Foto Mahasiswa" style="max-height: 100px;max-width: 100px">
+                                                </td>
                                                 <td style="vertical-align: middle">{{$m -> prodi->nama}}</td>
                                                 <td style="vertical-align: middle">{{$m -> jk}}</td>
                                                 <td style="vertical-align: middle">{{$m -> no_telp}}</td>
-                                                <td style="display: flex">
+                                                <td style="display: flex;align-items: center">
                                                     <a type="button" href={{url('/mahasiswa/'.$m->id. '/nilai')}} class="btn btn-sm btn-info text-white mx-1">
                                                         Nilai
                                                     </a>

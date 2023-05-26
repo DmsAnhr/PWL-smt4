@@ -6,13 +6,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Hobi</h1>
+                    <h1 class="m-0">Mahasiswa</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item"><a href="/mahasiswa">Mahasiswa</a></li>
-                        <li class="breadcrumb-item active">Tambah Mahasiswa</li>
+                        <li class="breadcrumb-item active">Data Mahasiswa</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -28,9 +28,24 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form method="POST" action="{{ $url_form }}">
+                            <form method="POST" action="{{ route('mahasiswa.update', $mhs->id) }}" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 {!! (isset($mhs))? method_field('PUT') : '' !!}
+                                @if (isset($mhs) && $mhs->foto)
+                                    <div class="form-group">
+                                        <label>Foto Saat Ini</label>
+                                        <br>
+                                        <img src="{{ asset('storage/'.$mhs->foto) }}" alt="Foto Mahasiswa" width="100">
+                                    </div>
+                                @endif
+                                <div class="form-group">
+                                    <label>Foto</label>
+                                    <input type="file" class="form-control" required="required" name="foto" value="{{ isset($mhs)? $mhs->foto : old('foto') }}"/>
+                                    @error('foto')
+                                        <span class="error invalid-feedback">{{ $message }} </span>
+                                    @enderror
+                                </div>
                                 <div class="form-group">
                                     <label>Nim</label>
                                     <input class="form-control @error('nim') is-invalid @enderror"
@@ -117,7 +132,7 @@
 
 
                                 <div class="form-group">
-                                    <button class="btn btn-sm btn-primary">Simpan</button>
+                                    <button class="btn btn-sm btn-primary" type="submit">Simpan</button>
                                 </div>
                             </form>
 

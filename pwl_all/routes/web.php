@@ -55,6 +55,8 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa','id');
     Route::get('/mahasiswa/{id}/nilai', [MahasiswaController::class, 'show']);
     Route::get('/mahasiswa/{id}/pdfNilai', [MahasiswaController::class ,'cetak_pdf']);
+    Route::put('/mahasiswa/{id}', [MahasiswaController::class ,'update'])->name('mahasiswa.update');
+
     
     Route::get('/prodi', [ProdiController::class, 'index']);
     
