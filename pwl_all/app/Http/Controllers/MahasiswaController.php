@@ -6,6 +6,7 @@ use App\Models\MahasiswaModel;
 use App\Models\Mahasiswa_MataKuliah;
 use App\Models\ProdiModel;
 use App\Models\HobiModel;
+use PDF;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -20,6 +21,13 @@ class MahasiswaController extends Controller
         $mhs = MahasiswaModel::all();
         return view('mahasiswa/mahasiswa')
                 -> with('mhs',$mhs);
+    }
+
+    public function cetak_pdf($id){
+        $mahasiswa = MahasiswaModel::find($id);
+        $nilai = Mahasiswa_MataKuliah::where('mahasiswa_id', $id)->get();
+        $pdf = PDF::loadview('mahasiswa.nilai_pdf', ['mahasiswa'=>$mahasiswa, 'nilai' => $nilai]);
+        return $pdf->stream();
     }
 
     /**

@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Membuat Laporan PDF Dengan DOMPDF Laravel</title>
+    <title>NIlai Mahasiwa</title>
 </head>
 
 <body>

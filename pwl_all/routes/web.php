@@ -54,11 +54,12 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/matkul', [MatkulController::class, 'index']);
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa','id');
     Route::get('/mahasiswa/{id}/nilai', [MahasiswaController::class, 'show']);
+    Route::get('/mahasiswa/{id}/pdfNilai', [MahasiswaController::class ,'cetak_pdf']);
     
     Route::get('/prodi', [ProdiController::class, 'index']);
     
     Route::resource('/articles', ArticleController::class);
 
-    Route::get('/article/cetak_pdf' ,[ArticleControler::class ,'cetak pdf']);
+    Route::get('/article/cetak_pdf' ,[ArticleControler::class ,'cetak_pdf']);
     
 });

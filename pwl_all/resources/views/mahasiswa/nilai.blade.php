@@ -28,6 +28,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+                            <h2 class="text-center w-100 mb-5">KARTU HASIL STUDI</h2>
                             <h5>Nama : {{ $mahasiswa->nama }}</h5>
                             <h5>Nim : {{ $mahasiswa->nim }}</h5>
                             <h5>Prodi : {{ $mahasiswa->prodi->nama }}</h5>
@@ -57,6 +58,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <a type="button" class="my-4 btn btn-block btn-lg btn-danger" href={{url('/mahasiswa/'.$mahasiswa->id.'/pdfNilai')}}>Cetak PDF</a>
                         </div>
                     </div>
                 </div>
