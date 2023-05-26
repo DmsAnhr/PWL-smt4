@@ -51,6 +51,10 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/keluarga', [KeluargaController::class, 'index']);
     Route::get('/matkul', [MatkulController::class, 'index']);
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa','id');
-
+    Route::get('/mahasiswa/{id}/nilai', [MahasiswaController::class, 'show']);
+    
     Route::get('/prodi', [ProdiController::class, 'index']);
+    
+    // Route::get('/mahasiswa-nilai', 'MahasiswaMataKuliahController@index')->name('mahasiswa-matakuliah.index');
+    
 });

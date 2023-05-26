@@ -9,4 +9,9 @@ class MatkulModel extends Model
 {
     use HasFactory;
     protected $table = 'matkul';
+
+    public function mahasiswa()
+    {
+        return $this->belongsToMany(MahasiswaModel::class, 'mahasiswa_matakuliah')->withPivot('nilai');
+    }
 }

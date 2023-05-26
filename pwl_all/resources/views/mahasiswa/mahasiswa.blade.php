@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Hobi</h1>
+                    <h1 class="m-0">Mahasiwa</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -53,6 +53,9 @@
                                                 <td style="vertical-align: middle">{{$m -> jk}}</td>
                                                 <td style="vertical-align: middle">{{$m -> no_telp}}</td>
                                                 <td style="display: flex">
+                                                    <a type="button" href={{url('/mahasiswa/'.$m->id. '/nilai')}} class="btn btn-sm btn-info text-white mx-1">
+                                                        Nilai
+                                                    </a>
                                                     <a type="button" href={{url('/mahasiswa/'.$m->id. '/edit')}} class="btn btn-sm btn-warning text-white mx-1">
                                                         Ubah
                                                     </a>
