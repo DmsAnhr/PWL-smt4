@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use PDF;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -43,7 +44,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         if ($request->file('image')) {
-            $image_name = $request->file('image')->store('images', 'publlic');
+            $image_name = $request->file('image')->store('images', 'public');
         }
 
         Article::create([
@@ -90,7 +91,7 @@ class ArticleController extends Controller
         $article->content = $request->content;
 
         if ($article->featured_image && file_exists(storage_path('app/public/' . $article->featured_image))) {
-            \Storage::delete('public/' . $article->featured_image);
+            Storage::delete('public/' . $article->featured_image);
         }
 
         $image_name = $request->file('image')->store('images', 'public');

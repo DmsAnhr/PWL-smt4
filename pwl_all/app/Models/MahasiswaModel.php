@@ -28,7 +28,7 @@ class MahasiswaModel extends Model
         return $this->belongsToMany(HobiModel::class);
     }
 
-    public function mataKuliah()
+    public function matakuliah()
     {
         return $this->belongsToMany(MatkulModel::class, 'mahasiswa_matakuliah')->withPivot('nilai');
     }

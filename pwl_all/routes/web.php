@@ -53,15 +53,17 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/keluarga', [KeluargaController::class, 'index']);
     Route::get('/matkul', [MatkulController::class, 'index']);
     Route::resource('/mahasiswa', MahasiswaController::class)->parameter('mahasiswa','id');
-    Route::get('/mahasiswa/{id}/nilai', [MahasiswaController::class, 'show']);
+    Route::get('/mahasiswa/{id}/nilai', [MahasiswaController::class, 'show_old']);
+    Route::get('/mahasiswa/{id}/detail', [MahasiswaController::class, 'show']);
     Route::get('/mahasiswa/{id}/pdfNilai', [MahasiswaController::class ,'cetak_pdf']);
     Route::put('/mahasiswa/{id}', [MahasiswaController::class ,'update'])->name('mahasiswa.update');
 
+    Route::get('getMahasiswa', [MahasiswaController::class ,'getMahasiswa'])->name('mhs.data');
     
     Route::get('/prodi', [ProdiController::class, 'index']);
     
     Route::resource('/articles', ArticleController::class);
 
-    Route::get('/article/cetak_pdf' ,[ArticleControler::class ,'cetak_pdf']);
+    Route::get('/article/cetak_pdf' ,[ArticleController::class ,'cetak_pdf']);
     
 });

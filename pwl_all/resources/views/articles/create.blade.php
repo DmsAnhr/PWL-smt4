@@ -28,7 +28,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/articles" method="post" enctype="multipart/formdata">
+                            <form action="/articles" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
                                     <label for="title">Title: </label>
